@@ -10,6 +10,14 @@ body{
     justify-content: center;
     align-items: center;
 }
+.user-info{
+    width: 400px;
+    border: 1px solid black;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
 .question-container{
     width: 400px;
     border: 1px solid black;
@@ -37,6 +45,7 @@ body{
     padding: 20px;
     background: #57c6fa;
     color: #ffffff;
+    border-radius: 0 0 10px 10px;
 
 }
 .modal{
@@ -62,6 +71,29 @@ body{
     padding: 10px;
     margin: 10px;
 }
+.game-settings{
+    width: 400px;
+    border: 1px solid black;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 10px;
+    background: linear-gradient(#57c6fa, #ffffff);
+    
+
+}
+.restart,.reset{
+    padding: 4px;
+    width: 40%;
+    background: transparent;
+    border-radius: 5px;
+}
+.restart:hover,.reset:hover{
+    transform: scale(1.2);
+}
+
 .hidden{
-    display: none;
+    /* display: none; */
 }
