@@ -9,15 +9,23 @@
 <body>
     
  <!--  -->
+    <div class="modal">
+        <label for="username">What is your Username</label>
+        <input type="text" id="username">
+        
+    </div>
 
-    <section class="user-info hidden">
+    <section class="user-info">
         <h1>Username: <span class="username">username</span></h1>
         <h1>Your Score: <span class="score">0</span></h1>
         <h1>The Highest Score: <span class="highestScore">0</span></h1>
+        <h1>Answered Questions: <span class="answers"></span> </h1>
+        <h1>Wrong Answers: <span class="wrong"></span></h1>
+        <h1>Correct Answers: <span class="correct"></span></h1>
     </section>
 
     <section class="question-container">
-        <div class="question-header">
+        <!-- <div class="question-header">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
         <div class="question-options">
@@ -40,12 +48,24 @@
             </div>
         <div class="button-container">
             <button>Answer</button>
+        </div> -->
+        <div class="conformation hidden">
+            <h1>Are you Ready</h1>
+            <section class="conformation-btn-container">
+                <button class="yes">Yes</button>
+                <button class="no">No</button>
+            </section>
         </div>
-       
+       <section class="counter hidden">
+            <p>The Quiz will start in</p>
+            <p ><span class="countDown">0</span> seconds </p>
+        </section>
     </section>
+
+    
     <div class="game-settings">
         <button class="restart">Restart</button>
-        <button class="reset">Reset </button> 
+        <button class="reset">Reset the Highest</button> 
     </div>
     
     

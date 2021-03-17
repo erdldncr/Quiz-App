@@ -18,36 +18,7 @@ body{
     margin-bottom: 20px;
     padding: 10px;
 }
-.question-container{
-    width: 400px;
-    border: 1px solid black;
-    box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
-    border-radius: 10px;
-}
-.question-header{
-    padding: 15px 0;
-    margin: 10px;
-    text-align: left;
-    
-}
-.question-options{
-    padding: 0 10px;
-    
-}
-.option{
-    padding: 10px 10px 10px 10px;
-}
-.button-container{
-    width: 100%;
-}
-.button-container button{
-    width: 100%;
-    padding: 20px;
-    background: #57c6fa;
-    color: #ffffff;
-    border-radius: 0 0 10px 10px;
 
-}
 .modal{
     position: absolute;
     background-color: #0e4158;
@@ -84,6 +55,78 @@ body{
     
 
 }
+.conformation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: #0e4158;
+}
+.conformation h1{
+    margin: 10px;
+}
+.conformation-btn-container{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+
+}
+.yes,.no{
+padding: 10px;
+width: 30%;
+background: transparent;
+}
+.yes:hover,.no:hover{
+    color: #ffffff;
+    font-size: larger;
+}
+
+.counter{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+}
+.counter p{
+    margin: 20px;
+}
+.counter:nth-child(2){
+    font-size: 2rem;
+}
+.question-container{
+    width: 400px;
+    border: 1px solid black;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+.question-header{
+    padding: 15px 0;
+    margin: 10px;
+    text-align: left;
+    
+}
+.question-options{
+    padding: 0 10px;
+    
+}
+.option{
+    padding: 10px 10px 10px 10px;
+}
+.button-container{
+    width: 100%;
+}
+.button-container button{
+    width: 100%;
+    padding: 20px;
+    background: #57c6fa;
+    color: #ffffff;
+    border-radius: 0 0 10px 10px;
+
+}
 .restart,.reset{
     padding: 4px;
     width: 40%;
@@ -95,5 +138,5 @@ body{
 }
 
 .hidden{
-    /* display: none; */
+    display: none;
 }
