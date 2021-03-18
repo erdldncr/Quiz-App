@@ -1,18 +1,21 @@
 const questions=[
     {
         question:'Which year are we in ?',
-        options:[2021,2022,2023,2024]
-        
+        options:[2021,2022,2023,2024],
+        correctAnswer:new Date().getFullYear()
     },
     {
         question:'Which month are we in ?',
-        options:['Jan','Feb','March','April','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] 
+        options:['Jan','Feb','March','April','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        correctAnswer:new Date().getMonth()
     },{
         question:'Which day are we on ?',
-        options:['Sun','Mon',"Tue",'Wed','Thu','Fri',"Sat"]
+        options:['Sun','Mon',"Tue",'Wed','Thu','Fri',"Sat"],
+        correctAnswer:new Date().getDay()
     }
 ]
 
+let questionNumber=0
 let score=0
 let highestScore=0
 let answeredQuestions=0
@@ -27,6 +30,8 @@ const noBtn=document.querySelector('.no')
 const conformation=document.querySelector('.conformation')
 const counter=document.querySelector('.counter')
 const startCountDown=document.querySelector('.countDown')
+const questionContainer=document.querySelector('.question-container')
+const options=document.querySelectorAll('.options')
 document.addEventListener('keydown',removeModal)
 document.addEventListener('click',removeModal)
 yesBtn.addEventListener('click',startGame)
@@ -76,34 +81,55 @@ function countDown(){
 
        return  setTimeout(countDown,1000)
     }else{
-        
+        displayQuestion()
     }
 
  
 }
 
+function displayQuestion(){
+    if(questionNumber<questions.length){
+        questionContainer.innerHTML=` <div class="question-header">
+        <h1> Question ${questionNumber+1}</h1>
+        <p>${questions[questionNumber].question}</p>
+    </div>
+    <div class="question-options">
+        <section class="option">
+            <input type="radio" class='options' name="option-1" id="option-0" value=${questions[questionNumber].options[0]}>
+        <label for="option-0">${questions[questionNumber].options[0]} </label>
+        </section>
+        <section class="option">
+            <input type="radio" class='options' name="option-1" id="option-1" value=${questions[questionNumber].options[1]}>
+        <label for="option-1">${questions[questionNumber].options[1]}</label>
+        </section>
+        <section class="option">
+            <input type="radio" class='options' name="option-1" id="option-2" value=${questions[questionNumber].options[2]}>
+        <label for="option-2">${questions[questionNumber].options[2]}</label>
+        </section>
+        <section class="option">
+            <input type="radio" class='options' name="option-1" id="option-3" value=${questions[questionNumber].options[3]}>
+        <label for="option-3">${questions[questionNumber].options[3]}</label>
+        </section>
+        </div>
+    <div class="button-container">
+        <button class='answer-btn'>Answer</button>
+    </div> </section>`
+  
+    
+      questionNumber++;
+    }else{
 
-// <!-- <div class="question-header">
-//             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-//         </div>
-//         <div class="question-options">
-//             <section class="option">
-//                 <input type="radio" name="option-1" id="option-1">
-//             <label for="option-1"> Lorem ipsum dolor sit.</label>
-//             </section>
-//             <section class="option">
-//                 <input type="radio" name="option-1" id="option-1">
-//             <label for="option-1"> Lorem ipsum dolor sit.</label>
-//             </section>
-//             <section class="option">
-//                 <input type="radio" name="option-1" id="option-1">
-//             <label for="option-1"> Lorem ipsum dolor sit.</label>
-//             </section>
-//             <section class="option">
-//                 <input type="radio" name="option-1" id="option-1">
-//             <label for="option-1"> Lorem ipsum dolor sit.</label>
-//             </section>
-//             </div>
-//         <div class="button-container">
-//             <button>Answer</button>
-//         </div> --></section>
+    }
+
+
+document.querySelector('.answer-btn').addEventListener('click',()=>{
+
+    ///burada durdu, secilen degerin dogru olup olmadigna bakacam
+    const options=document.querySelectorAll('.options')
+    options.forEach(option=>console.log(option.value))
+
+    displayQuestion()
+})
+}
+
+
