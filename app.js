@@ -16,7 +16,7 @@ const questions=[
 ]
 
 let questionNumber=0
-let score=0
+let currentScore=0
 let highestScore=0
 let answeredQuestions=0
 let wrongQuestions=0
@@ -27,17 +27,19 @@ const modal=document.querySelector('.modal')
 const userNameText=document.querySelector('.username')
 const yesBtn=document.querySelector('.yes')
 const noBtn=document.querySelector('.no')
+
 const conformation=document.querySelector('.conformation')
 const counter=document.querySelector('.counter')
 const startCountDown=document.querySelector('.countDown')
 const questionContainer=document.querySelector('.question-container')
-const options=document.querySelectorAll('.options')
+const score=document.querySelector('.score')
+const theHighestScore=document.querySelector('.highest-score')
+const answers=document.querySelector('.answers')
+const wrong= document.querySelector('.wrong')
+const correct= document.querySelector('.correct')
 document.addEventListener('keydown',removeModal)
 document.addEventListener('click',removeModal)
 yesBtn.addEventListener('click',startGame)
-
-
-
 
 
 
@@ -114,22 +116,30 @@ function displayQuestion(){
     <div class="button-container">
         <button class='answer-btn'>Answer</button>
     </div> </section>`
+        
+    questionNumber++;
+    const answerBtn=document.querySelector('.answer-btn');
   
+    answerBtn.addEventListener('click',()=>{
+    let filtered=[...document.querySelectorAll('.options')].filter(option=>option.checked)
+        if(filtered.length==0){
+            questionContainer.insertAdjacentHTML('afterbegin','<h1>You have to answer the question</h1>')
+        }else{
+            displayQuestion()
+        }
+
+    })
     
-      questionNumber++;
     }else{
 
+        
     }
 
 
-document.querySelector('.answer-btn').addEventListener('click',()=>{
+    
 
-    ///burada durdu, secilen degerin dogru olup olmadigna bakacam
-    const options=document.querySelectorAll('.options')
-    options.forEach(option=>console.log(option.value))
 
-    displayQuestion()
-})
+
 }
 
 
