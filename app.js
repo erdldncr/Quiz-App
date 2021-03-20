@@ -95,6 +95,7 @@ function countDown(){
 }
 
 function displayQuestion(){
+    displayHighesScore()
     if(questionNumber<questions.length){
         answers.textContent=questionNumber+1
         questionContainer.innerHTML=` <div class="question-header">
@@ -170,7 +171,17 @@ function findCorrectAnswer(num){
         score.textContent=correctQuestions
         userChoice!=correctAnswer&&wrongQuestions++;
         wrong.textContent=wrongQuestions
+        displayHighesScore(correctQuestions)
     }
     
+
+}
+
+function displayHighesScore(correctQuestions){
+let highestScore=localStorage.getItem('highestScore')??0
+highestScore*1<correctQuestions?highestScore=correctQuestions:highestScore
+
+theHighestScore.textContent=highestScore
+localStorage.setItem('highestScore',highestScore)
 
 }
