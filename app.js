@@ -96,6 +96,7 @@ function countDown(){
 
 function displayQuestion(){
     if(questionNumber<questions.length){
+        answers.textContent=questionNumber+1
         questionContainer.innerHTML=` <div class="question-header">
         <h1> Question ${questionNumber+1}</h1>
         <p>${questions[questionNumber].question}</p>
@@ -121,9 +122,11 @@ function displayQuestion(){
     <div class="button-container">
         <button class='answer-btn'>Answer</button>
     </div> </section>`
-        
+     
+   
     questionNumber++;
         answerBtnEventListener()
+   
     
     }else{
 
@@ -160,10 +163,11 @@ function findCorrectAnswer(num){
 
     let userChoice=[...document.querySelectorAll('.options')].filter(option=>option.checked)[0].value
     let correctAnswer=questions[questionNumber-1].correctAnswer
-    if(num<questions.length){
+    if(num<questions.length-1){
 
         userChoice==correctAnswer&&correctQuestions++;
         correct.textContent=correctQuestions
+        score.textContent=correctQuestions
         userChoice!=correctAnswer&&wrongQuestions++;
         wrong.textContent=wrongQuestions
     }
