@@ -1,3 +1,6 @@
+const months=['January','February','March','April','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+const days=['Sun','Mon',"Tue",'Wed','Thu','Fri',"Sat"]
+
 const questions=[
     {
         question:'Which year are we in ?',
@@ -6,12 +9,12 @@ const questions=[
     },
     {
         question:'Which month are we in ?',
-        options:['Jan','Feb','March','April','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-        correctAnswer:new Date().getMonth()
+        options:['January','February','March','April','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        correctAnswer:months[new Date().getMonth()]
     },{
         question:'Which day are we on ?',
         options:['Sun','Mon',"Tue",'Wed','Thu','Fri',"Sat"],
-        correctAnswer:new Date().getDay()
+        correctAnswer:days[new Date().getDay()]
     }
 ]
 
@@ -27,6 +30,8 @@ const modal=document.querySelector('.modal')
 const userNameText=document.querySelector('.username')
 const yesBtn=document.querySelector('.yes')
 const noBtn=document.querySelector('.no')
+let answerBtn;
+
 
 const conformation=document.querySelector('.conformation')
 const counter=document.querySelector('.counter')
@@ -118,17 +123,7 @@ function displayQuestion(){
     </div> </section>`
         
     questionNumber++;
-    const answerBtn=document.querySelector('.answer-btn');
-  
-    answerBtn.addEventListener('click',()=>{
-    let filtered=[...document.querySelectorAll('.options')].filter(option=>option.checked)
-        if(filtered.length==0){
-            questionContainer.insertAdjacentHTML('afterbegin','<h1>You have to answer the question</h1>')
-        }else{
-            displayQuestion()
-        }
-
-    })
+        answerBtnEventListener()
     
     }else{
 
@@ -143,3 +138,35 @@ function displayQuestion(){
 }
 
 
+function answerBtnEventListener(){
+
+    answerBtn=document.querySelector('.answer-btn');
+    let nuOfclicked=0
+    answerBtn.addEventListener('click',()=>{
+    let filtered=[...document.querySelectorAll('.options')].filter(option=>option.checked)
+        if(filtered.length==0){
+            questionContainer.insertAdjacentHTML('afterbegin','<h1>You have to answer the question</h1>')
+        }else{
+            
+            nuOfclicked++
+            findCorrectAnswer(nuOfclicked)
+            displayQuestion()
+        }
+
+    })
+}
+
+function findCorrectAnswer(num){
+
+    let userChoice=[...document.querySelectorAll('.options')].filter(option=>option.checked)[0].value
+    let correctAnswer=questions[questionNumber-1].correctAnswer
+    if(num<questions.length){
+
+        userChoice==correctAnswer&&correctQuestions++;
+        correct.textContent=correctQuestions
+        userChoice!=correctAnswer&&wrongQuestions++;
+        wrong.textContent=wrongQuestions
+    }
+    
+
+}
