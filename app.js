@@ -42,10 +42,14 @@ const theHighestScore=document.querySelector('.highest-score')
 const answers=document.querySelector('.answers')
 const wrong= document.querySelector('.wrong')
 const correct= document.querySelector('.correct')
+const restartBtn=document.querySelector('.restart')
+const resetBtn=document.querySelector('.reset')
 document.addEventListener('keydown',removeModal)
 document.addEventListener('click',removeModal)
 yesBtn.addEventListener('click',startGame)
 
+restartBtn.addEventListener('click',restartTheGame)
+resetBtn.addEventListener('click',resetTheGame)
 
 
 
@@ -93,7 +97,7 @@ function countDown(){
 
  
 }
-
+displayHighesScore()
 function displayQuestion(){
     displayHighesScore()
     if(questionNumber<questions.length){
@@ -178,10 +182,20 @@ function findCorrectAnswer(num){
 }
 
 function displayHighesScore(correctQuestions){
-let highestScore=localStorage.getItem('highestScore')??0
+ highestScore=localStorage.getItem('highestScore')??0
 highestScore*1<correctQuestions?highestScore=correctQuestions:highestScore
 
 theHighestScore.textContent=highestScore
 localStorage.setItem('highestScore',highestScore)
+
+}
+function restartTheGame(){
+  location.reload()
+}
+function resetTheGame(){
+ highestScore=localStorage.getItem('highestScore')??0
+    highestScore=0
+    localStorage.setItem('highestScore',highestScore)
+    displayHighesScore()
 
 }
